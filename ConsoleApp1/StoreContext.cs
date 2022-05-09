@@ -10,10 +10,18 @@ namespace ConsoleApp1
 {
     public class StoreContext : DbContext
     {
-
         public DbSet<Product> Products { get; set; }
 
         public DbSet<ToBuy> Buys { get; set; }
+
+        public DbSet<Promotion> Promotions { get; set; }
+
+        // Criando a chave composta da minha classe PromocaoProduto
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<ProductPromotion>().HasKey(pp => new { pp.PromotionId, pp.ProductId });
+            base.OnModelCreating(modelBuilder);
+        }
 
         // sobreescrevendo o metodo. metodo de configuração
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

@@ -12,5 +12,6 @@ namespace ConsoleApp1.models
         public string Name { get; internal set; }
         public string Category { get; internal set; }
         public double Price { get; internal set; }
+        public IList<ProductPromotion> Promotions { get; set; }
     }
 }
