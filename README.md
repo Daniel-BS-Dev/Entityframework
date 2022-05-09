@@ -243,4 +243,6 @@ c.Delivery = new Address()
   }
 ``````
 
+## Consultas
+
 
