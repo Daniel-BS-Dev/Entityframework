@@ -181,4 +181,66 @@ class Program
     }
 ``````
 
+## Realcionamento um para um
+- Classe Client
+````
+public class Client
+    {
+        public int Id { get; set; }
+        public string Name { get; internal set; }
+        public Address Delivery { get; set; }
+    }
+``````
+
+- Classe Endereço
+````
+public class Address
+    {
+        public int Number { get; internal set; }
+        public string Street { get; internal set; }
+        public string Avenue { get; internal set; }
+        public string City { get; internal set; }
+        // linha responsável por deixa meu endereço dependente do cliente
+        public Client Client { get; internal set; }
+    }
+``````
+
+- Classe LojaContexto
+````
+   public DbSet<Client> Clients { get; set; }
+   
+   protected override void OnModelCreating(ModelBuilder modelBuilder)
+   {
+   // criando a chave primaria da classe address
+     modelBuilder
+       Entity<Address>()
+       Property<int>("ClientId"); // Criando a chave
+
+      modelBuilder
+        Entity<Address>()
+        HasKey("ClientId"); // o id vai ser o id da tabela cliente
+
+     base.OnModelCreating(modelBuilder);
+    }
+``````
+
+
+- Classe LojaContexto
+````
+var c = new Client();
+c.Name = "fulano de tal";
+c.Delivery = new Address()
+ {
+   Number = 12,
+   Street = "Rua dos Invalidos",
+   Avenue = "Centro",
+   City = "Cidade"
+  };
+  using (var contexto = new StoreContext())
+  {
+    contexto.Clients.Add(c);
+    contexto.SaveChanges();
+  }
+``````
+
 
