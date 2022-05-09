@@ -244,5 +244,36 @@ c.Delivery = new Address()
 ``````
 
 ## Consultas
+````
+ var promotion = new Promotion();
+     promotion.Description = "Queima Total Janeiro 2017";
+     promotion.DateBegin = new DateTime(2017, 1, 1);
+     promotion.DateBegin = new DateTime(2017, 1, 31);
+
+     using (var context = new StoreContext())
+      {
+         var product = context
+           .Products
+           .Where(p => p.Category == "Bedidas")
+           .ToList();
+
+           foreach(var item in product)
+           {
+              promotion.IncludeProduct(item);
+           }
+
+           context.Promotions.Add(promotion);
+           context.SaveChanges();
+
+           }
+
+            using(var context = new StoreContext())
+            {
+               foreach(var item in promotion.Products)
+                {
+                    Console.WriteLine(item.Product);
+                }
+            }
+``````
 
 
