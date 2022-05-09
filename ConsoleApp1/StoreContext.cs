@@ -3,12 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ConsoleApp1.models;
 using Microsoft.EntityFrameworkCore;
 
 namespace ConsoleApp1
 {
-    class StoreContext : DbContext
+    public class StoreContext : DbContext
     {
+
+        public DbSet<Product> Products { get; set; }
+
+        public DbSet<ToBuy> Buys { get; set; }
 
         // sobreescrevendo o metodo. metodo de configuração
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

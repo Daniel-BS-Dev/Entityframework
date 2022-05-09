@@ -165,7 +165,17 @@
     <Compile Include="Migrations\20220509112107_Initial.designer.cs">
       <DependentUpon>20220509112107_Initial.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\20220509114112_Product.cs" />
+    <Compile Include="Migrations\20220509114112_Product.designer.cs">
+      <DependentUpon>20220509114112_Product.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\20220509121121_Buy.cs" />
+    <Compile Include="Migrations\20220509121121_Buy.designer.cs">
+      <DependentUpon>20220509121121_Buy.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\StoreContextModelSnapshot.cs" />
+    <Compile Include="models\Product.cs" />
+    <Compile Include="models\ToBuy.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StoreContext.cs" />
